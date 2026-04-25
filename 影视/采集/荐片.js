@@ -647,11 +647,12 @@ const searchVod = async (wd, pg = 1) => {
     return {
       list,
       page: parseInt(pg),
-      pagecount: hasMore ? parseInt(pg) + 1 : parseInt(pg)
+      pagecount: hasMore ? parseInt(pg) + 1 : parseInt(pg),
+      total: list.length
     };
   } catch (e) {
     logError('搜索失败', e);
-    return { list: [], page: pg, pagecount: pg };
+    return { list: [], page: pg, pagecount: pg, total: 0 };
   }
 };
 
