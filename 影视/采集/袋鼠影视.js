@@ -311,7 +311,7 @@ async function search(params, context) {
       referer: `${BASE_URL}/search.php`,
     }));
     const parsed = parseSearchList(html);
-    const totalMatch = html.match(/相关的.?“(\d+)”.?条结果/);
+    const totalMatch = html.match(/相关的.*?“(\d+)”.*?条结果/);
     const total = totalMatch ? Number(totalMatch[1] || 0) : parsed.list.length;
     return {
       page,
