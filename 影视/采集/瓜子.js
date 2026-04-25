@@ -918,14 +918,16 @@ async function search(params) {
         return {
             list: filteredList,
             page: parseInt(page),
-            pagecount: totalPage === 0 ? 1 : totalPage
+            pagecount: totalPage === 0 ? 1 : totalPage,
+            total: filteredList.length
         };
     } catch (error) {
         logError('搜索视频失败', error);
         return {
             page: 1,
             pagecount: 0,
-            list: []
+            list: [],
+            total: 0
         };
     }
 }
