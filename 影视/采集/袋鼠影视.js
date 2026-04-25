@@ -302,7 +302,7 @@ async function search(params, context) {
     const page = Math.max(1, Number(params.page || 1));
     if (!wd) return { page, pagecount: 0, total: 0, list: [] };
     const body = `searchword=${encodeURIComponent(wd)}`;
-    const html = await getCachedText(`daishu:search:${wd}:${page}`, SEARCH_CACHE_TTL, async () => requestText(`${BASE_URL}/search.php?page=${page}`, {
+    const html = await getCachedText(`daishu:search:${wd}:${page}`, SEARCH_CACHE_TTL, async () => requestText(`${BASE_URL}/search.php?page=${page}&searchword=${wd}&searchtype=`, {
       method: "POST",
       body,
       headers: {
